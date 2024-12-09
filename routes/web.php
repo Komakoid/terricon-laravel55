@@ -31,6 +31,15 @@ Route::get('/skills/{category}', function($category) {
 
 });
 
+Route::get('/news1' , function() {
+    $title2 = 'Новости terricon';
+
+    return view('news', [
+        'title2' => $title2
+    ]); 
+});
+
+
 
 Route::get('/skills', function(){
     $title = 'Навыки';
