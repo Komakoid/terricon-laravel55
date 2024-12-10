@@ -5,31 +5,19 @@ use App\Models\Rabota;
 
 use App\Models\Skill;
 
+use App\Http\Controllers\Testcontroller;
+
+use App\Http\Controllers\SkillController;
 
 
-
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function() {
+    return view("welcome");
 });
 
-route::get('/test', function () {
-    return 123;
-});
 
-Route::get('/skills/{category}', function($category) {
-    $title = "Навыки в категории $category";
+route::get('/test/{id}', [Testcontroller::class, 'show']); 
 
-    $skills = skill::where('category', $category)->get();
-
-   
-
-  
-    return view('skills')
-        ->with('title', $title)
-        ->with('skills', $skills);
-
-
-});
+Route::get('/skills/{category}' , [Testcontroller::class, 'getAllSkillsCategory']);
 
 Route::get('/news1' , function() {
     $title2 = 'Новости terricon';
@@ -41,18 +29,19 @@ Route::get('/news1' , function() {
 
 
 
-Route::get('/skills', function(){
-    $title = 'Навыки';
+Route::get('/skills', [Testcontroller::class, 'SkillsBe'] );
 
-    $skills = skill::all();
-
-  
-    return view('skills')
-        ->with('title', $title)
-        ->with('skills', $skills);
+route::get('/skills-json', [Testcontroller::class, 'getAllskills']); 
 
 
-});
+Route::get('/create-skill',[SkillController::class, 'renderCreatePage'])
+    ->middleware('auth')
+    ->name('skillCreate');
+
+
+Route::post('/create-skill', [SkillController::class, 'createSkill'])
+    ->middleware('auth')
+    ->name('skillCreate.post');
 
 
 
