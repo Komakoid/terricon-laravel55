@@ -39,6 +39,13 @@ Route::get('/create-skill',[SkillController::class, 'renderCreatePage'])
     ->name('skillCreate');
 
 
+
+Route::get('/delete-skill/{id}',[SkillController::class, 'deleteSkill'])
+    ->middleware('auth')
+    ->name('skillDelete');
+
+
+
 Route::post('/create-skill', [SkillController::class, 'createSkill'])
     ->middleware('auth')
     ->name('skillCreate.post');

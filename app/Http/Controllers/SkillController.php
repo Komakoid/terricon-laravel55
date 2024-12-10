@@ -11,7 +11,9 @@ class SkillController extends Controller
     public function renderCreatePage()
     {
 
-        return view('createSkill');
+        $skills = Skill::all();
+
+        return view('createSkill')->with('skills', $skills);
 
     }
 
@@ -24,4 +26,15 @@ class SkillController extends Controller
         return back();
 
     }
+
+
+    public function deleteSkill ($id)
+    {
+        $skill = Skill::find($id);
+        if($skill) {
+            $skill->delete();
+        }
+        return back();
+    }
+
 }
