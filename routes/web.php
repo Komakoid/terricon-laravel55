@@ -103,7 +103,9 @@ route::middleware([
 
 ])->prefix('admin')->group(function () {
 
-    Route::get('/users', [AdminController::class, 'renderusers']);
+    Route::get('/users', [AdminController::class, 'renderusers'])->name('renderUsers');
+    
+    Route::get("/delete-user/{id}",[AdminController::class, 'deleteUser'])->name('deleteUser');
 
 });
 

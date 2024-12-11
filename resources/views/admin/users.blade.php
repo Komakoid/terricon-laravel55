@@ -29,7 +29,8 @@
                                     <td>{{ $user->name}} </td>
                                     <td>{{ $user->role}}</td>
                                     <td>{{ $user->email}} </td>
-                                    <td>Удалить</td>
+                                    <td>
+                                        <a href="{{route('deleteUser', $user->id) }}" class="text-red-500"  onclick="if(confirm('точно удалить ')) return false;">Удалить</a>
                                     <td>Редактировать </td>
                                 </tr>
                             @endforeach
@@ -40,5 +41,18 @@
 
             </div>
         </div>
+
+        <style>
+            table {
+                width: 100%;
+                text-align: left;
+                color: white;
+            }
+
+            table tr {
+                border-bottom: 1px solid white;
+            }
+
+        </style>
     </div>
 </x-app-layout>
