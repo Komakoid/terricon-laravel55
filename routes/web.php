@@ -9,6 +9,8 @@ use App\Http\Controllers\Testcontroller;
 
 use App\Http\Controllers\SkillController;
 
+use App\Http\Controllers\AdminController;
+
 
 Route::get('/', function() {
     return view("welcome");
@@ -93,6 +95,16 @@ Route::get('/news' , function() {
     return view('news', [
         'title2' => $title2
     ]); 
+});
+
+route::middleware([
+    'auth',
+    'roleChecker:admin'
+
+])->prefix('admin')->group(function () {
+
+    Route::get('/users', [AdminController::class, 'renderusers']);
+
 });
 
 Route::middleware([
