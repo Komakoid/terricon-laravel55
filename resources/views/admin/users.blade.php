@@ -16,7 +16,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>LvL</th>
+                                <th>Role</th>
+                                <th>E-mail</th>
+                                <th>Удалить</th>
+                                <th>Редактировать</th>
                             </tr>
                         </thead>  
                         <tbody>
@@ -24,6 +27,10 @@
                                 <tr>
                                     <td>{{ $user->id}}</td>
                                     <td>{{ $user->name}} </td>
+                                    <td>{{ $user->role}}</td>
+                                    <td>{{ $user->email}} </td>
+                                    <td>Удалить</td>
+                                    <td>Редактировать </td>
                                 </tr>
                             @endforeach
                     </table>    
